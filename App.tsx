@@ -7,16 +7,15 @@ import WelcomeModal from './components/WelcomeModal';
 import { ShieldCheck, BookOpen } from 'lucide-react';
 
 const App: React.FC = () => {
-  // Removed Activation Logic State
   const [showWelcome, setShowWelcome] = useState(false);
   const [currentSection, setCurrentSection] = useState('home');
 
   useEffect(() => {
     // Show welcome modal once per user session/browser
-    const hasVisited = localStorage.getItem('hasVisitedBadiniTranslate_V2');
+    const hasVisited = localStorage.getItem('hasVisitedBadiniTranslate_V3');
     if (!hasVisited) {
       setShowWelcome(true);
-      localStorage.setItem('hasVisitedBadiniTranslate_V2', 'true');
+      localStorage.setItem('hasVisitedBadiniTranslate_V3', 'true');
     }
   }, []);
 
@@ -105,7 +104,7 @@ const App: React.FC = () => {
       
       <Navbar onNavigate={setCurrentSection} currentSection={currentSection} />
       
-      <main className="flex-grow w-full relative z-10">
+      <main className="flex-grow w-full relative z-10 flex flex-col">
         {renderContent()}
       </main>
       
